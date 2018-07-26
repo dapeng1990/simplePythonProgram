@@ -1,0 +1,2 @@
+# simplePythonProgram
+学习python过程中练习的python程序
