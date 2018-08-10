@@ -12,12 +12,13 @@
 def consumer():
     r = ''
     while True:
-        n = yield r
+        n = yield r #将外部参数传递给n，最后send()方法接收r
         if not n:
             return
         print('[CONSUMER] consuming %s....'%n)
         r = '200 ok'
-        
+
+
 def produce(c):
     c.send(None)
     n = 0
@@ -30,3 +31,21 @@ def produce(c):
 
 c = consumer()
 produce(c)
+
+
+
+def consumer1():
+  r = 'here'
+  for i in range(3):
+    yield i
+    #r = '200 OK'+ str(i)
+    print(r,i)
+
+
+d = consumer1()
+n1 = d.__next__()
+print(n1)
+n2 = d.__next__()
+print(n1)
+n3 = d.__next__()
+print(n1)
